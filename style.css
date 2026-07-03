@@ -1,0 +1,292 @@
+/* ==========================
+   GLOBAL STYLES
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+     body{
+    background-image: url("bg.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+/* ==========================
+   AI BACKGROUND
+========================== */
+
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        rgba(10,25,47,0.70),
+        rgba(17,34,64,0.85)
+    ),
+    url("bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    z-index:-1;
+}
+
+/* ==========================
+   HOME / LOGIN / ABOUT
+========================== */
+
+.home-page,
+.login-page,
+.about-page{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.home-container,
+.login-container,
+.about-container{
+
+    width:90%;
+    max-width:700px;
+
+    padding:35px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:20px;
+
+    box-shadow:0 0 30px rgba(0,0,0,0.4);
+}
+
+.home-container h1,
+.login-container h2,
+.about-container h2{
+    margin-bottom:20px;
+}
+
+.home-container p,
+.about-container p{
+    line-height:1.8;
+    font-size:18px;
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+button{
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2563eb;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    margin-top:10px;
+}
+
+button:hover{
+    background:#1d4ed8;
+    transform:scale(1.05);
+}
+
+/* ==========================
+   INPUTS
+========================== */
+
+input,
+textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    margin:10px 0;
+
+    font-size:15px;
+}
+
+textarea{
+    height:150px;
+    resize:none;
+}
+
+/* ==========================
+   DASHBOARD
+========================== */
+
+.app{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+.sidebar{
+
+    width:240px;
+
+    background:rgba(0,0,0,0.55);
+
+    backdrop-filter:blur(10px);
+
+    padding:20px;
+}
+
+.sidebar h2{
+    margin-bottom:20px;
+}
+
+.sidebar a{
+
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px;
+
+    margin-bottom:10px;
+
+    border-radius:10px;
+
+    transition:0.3s;
+}
+
+.sidebar a:hover{
+    background:#2563eb;
+}
+
+.sidebar a.active{
+    background:#2563eb;
+}
+
+/* ==========================
+   MAIN CONTENT
+========================== */
+
+.main{
+    flex:1;
+    padding:25px;
+}
+
+header h1{
+    margin-bottom:20px;
+}
+
+/* ==========================
+   CARDS
+========================== */
+
+.card{
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:15px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* ==========================
+   GRID
+========================== */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:15px;
+}
+
+/* ==========================
+   MIND MAP
+========================== */
+
+#mindmap{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
+}
+
+.node{
+
+    background:#2563eb;
+
+    padding:10px 15px;
+
+    border-radius:20px;
+
+    color:white;
+
+    transition:0.3s;
+}
+
+.node:hover{
+    transform:scale(1.05);
+}
+
+/* ==========================
+   LISTS
+========================== */
+
+#points li,
+#quiz li,
+#saved li{
+    margin:8px 0;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+    .app{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        height:auto;
+    }
+}

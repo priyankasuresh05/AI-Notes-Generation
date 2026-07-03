@@ -1,0 +1,305 @@
+Hello Priyanka!!!
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+
+<div class="app">
+
+<aside class="sidebar">
+  <h2>🧠 AI Notes</h2>
+  <a href="index.html">🏠 Home</a>
+  <a href="generator.html" class="active">⚡ Generate</a>
+  <a href="about.html">ℹ️ About</a>
+  <a href="#" onclick="logout()">🚪 Logout</a>
+</aside>
+
+<main class="main">
+
+<header>
+  <h1>Dashboard</h1>
+</header>
+<div class="card">
+
+<h3>⏱ Focus Timer</h3>
+
+<input
+type="number"
+id="studyMinutes"
+placeholder="Enter Minutes">
+
+<button onclick="startTimer()">
+Start Timer
+</button>
+
+ <h2 id="timer">
+00:00:00
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Daily Motivation</h3>
+
+<p id="quote"></p>
+
+</div>
+ 
+<div class="card">
+
+<input
+type="file"
+id="pdfFile"
+accept=".pdf">
+
+<button onclick="uploadPDF()">
+📄 Upload PDF
+</button>
+
+<textarea
+id="inputText"
+placeholder="Enter text...">
+</textarea>
+
+<button onclick="startVoice()">
+🎤 Speak
+</button>
+
+<button onclick="generateNotes()">
+Generate
+</button>
+
+</div>
+<div class="card">
+
+<h3>Analytics</h3>
+
+<p id="totalWords">
+0 Words Processed
+</p>
+
+</div>
+<div class="card" id="analyticsSection">
+
+<h3>Study Progress</h3>
+
+<canvas
+id="progressChart"
+width="400"
+height="200">
+</canvas>
+
+</div>
+<div class="card">
+
+<h3>📊 Progress</h3>
+
+<progress
+id="progressBar"
+value="0"
+max="100">
+</progress>
+
+<p id="progressText">
+0%
+</p>
+
+<h3>
+🏆 Productivity Score
+</h3>
+
+<h2 id="score">
+0/100
+</h2>
+
+<h3>
+🔥 Streak
+</h3>
+
+<p id="streak">
+0 Days
+</p>
+
+</div>
+<div class="grid">
+  <div class="card"><p id="wordCount">Words: 0</p></div>
+  <div class="card"><p id="readTime">Time: 0</p></div>
+  <div class="card"><p id="difficulty">Level: -</p></div>
+</div>
+<div class="grid">
+
+<div class="card">
+<h3>Total Notes</h3>
+<p id="totalNotes">0</p>
+</div>
+
+<div class="card">
+<h3>Study Hours</h3>
+<p id="studyHours">0 hrs</p>
+</div>
+
+<div class="card">
+<h3>Study Streak</h3>
+<p id="study streak">0 Days</p>
+</div>
+
+</div>
+<div class="card">
+
+<h3>Study Rank</h3>
+
+<p id="rank">
+Beginner
+</p>
+
+</div>
+<div class="card">
+
+<h3>Achievements</h3>
+
+<p id="badge">
+🥉 Beginner Learner
+</p>
+
+</div>
+<div class="card">
+
+<button onclick="showSection('summarySection')">
+Summary
+</button>
+
+<button onclick="showSection('quizSection')">
+Quiz
+</button>
+
+<button onclick="showSection('mindmapSection')">
+Mind Map
+</button>
+
+<button onclick="showSection('analyticsSection')">
+Analytics
+</button>
+
+</div>
+<div class="card" id="summarySection">
+  <h3>Summary</h3>
+  <p id="summary"></p>
+  <button onclick="saveNotes()">💾 Save Notes</button>
+  <button onclick="downloadNotes()">
+📥 Download Notes
+</button>
+<button onclick="downloadPDF()">
+📄 Download PDF
+</button>
+</div>
+
+<div class="card">
+  <h3>Key Points</h3>
+  <ul id="points"></ul>
+</div>
+
+<div class="card" id="quizSection">
+  <h3>Quiz</h3>
+  <ul id="quiz"></ul>
+</div>
+
+<div class="card" id="mindmapSection">
+  <h3>Mind Map</h3>
+  <div id="mindmap"></div>
+</div>
+<div class="card">
+
+<h3>Daily Goal</h3>
+
+<input
+type="number"
+id="goalHours"
+placeholder="Enter Hours">
+
+<button onclick="saveGoal()">
+Set Goal
+</button>
+
+<p id="goalStatus">
+No Goal Set
+</p>
+
+</div>
+<div class="card">
+
+<h3>AI Study Assistant</h3>
+
+<input
+id="chatInput"
+placeholder="Ask a question">
+
+<button onclick="askAI()">
+Ask
+</button>
+
+<p id="chatReply"></p>
+
+</div>
+<div class="card">
+
+<h3>Weekly Tasks</h3>
+
+<input
+id="taskInput"
+placeholder="Add Task">
+
+<button onclick="addTask()">
+Add Task
+</button>
+
+<ul id="tasks"></ul>
+
+</div>
+<div class="card">
+  <h3>Saved Notes</h3>
+  <ul id="saved"></ul>
+</div>
+<div class="card">
+
+<h3>
+👨‍👩‍👧 Parent Dashboard
+</h3>
+
+<p id="parentProgress">
+Progress: 0%
+</p>
+
+<p id="parentScore">
+Score: 0/100
+</p>
+
+</div>
+<div class="card">
+
+<h3>
+🏫 Institution Dashboard
+</h3>
+
+<p id="instProgress">
+Overall Progress: 0%
+</p>
+
+<p id="instScore">
+Average Score: 0
+</p>
+
+</div>
+</main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
